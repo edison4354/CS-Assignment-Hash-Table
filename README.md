@@ -1,1 +1,2 @@
-# CS-Assignment-Hash-Table
+# CS-Frequency-Counter
+Created a word-frequency counting program while using hash tables.

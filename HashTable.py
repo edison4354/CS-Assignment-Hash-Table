@@ -29,11 +29,11 @@ class HashTable:
   # Hash functions are a function that turns each of these keys into an index value that we can use to decide where in our list each key:value pair should be stored. 
 
   def hash_func(self, key):
-    first_letter = key[0]
-    distance_from_a = ord(first_letter) - ord('a')
-    index = distance_from_a % self.size
+    ascii_value = 0
+    for i in key: 
+      ascii_value += ord(i)
+    index = ascii_value % self.size
     return index
-
 
 
   # 3️⃣ TODO: Complete the insert method.
@@ -41,15 +41,17 @@ class HashTable:
   # Should insert a key value pair into the hash table, where the key is the word and the value is a counter for the number of times the word appeared. When inserting a new word in the hash table, be sure to check if there is a Node with the same key in the table already.
 
   def insert(self, key, value):
-
     new_data = (key, value)
     arr_index = self.hash_func(key)
     ll = self.arr[arr_index]
+
+    print(f'Looking for {key} in LinkedList[{arr_index}]')
 
     if ll.find(key) == -1:
         print(f"{key} was not found")
         ll.append(new_data)
     else:
+        print(f"{key} was found | Now updating...")
         ll.update(key, value)
 
 
